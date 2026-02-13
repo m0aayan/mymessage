@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To my cutes</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="loader.css">
+
+		<style>
+			.image-gallery {display:flex;flex-direction:column;align-items:center;gap:14px;margin:18px 0;}
+			.image-gallery figure{margin:0;display:flex;flex-direction:column;align-items:center}
+			.main-photo {max-width:380px;width:80%;height:auto;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.12);} 
+			.secondary-photo {max-width:420px;width:86%;height:auto;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.12);} 
+			.caption {margin-top:8px;font-size:0.95rem;color:#333;text-align:center}
+			.proposal {margin-top:18px;font-weight:600;}
+			@media(min-width:780px){.image-gallery{flex-direction:row;align-items:flex-start}.main-photo{width:45%;max-width:520px}.secondary-photo{width:48%;max-width:560px}}
+		</style>
+
+		<style>
+			/* Cute themed frame around page content */
+			.frame{max-width:980px;margin:20px auto;padding:18px;border-radius:20px;background:linear-gradient(180deg,#fff7fb,#fff);border:4px solid rgba(255,182,193,0.35);box-shadow:0 12px 30px rgba(255,105,180,0.08), inset 0 2px 0 rgba(255,255,255,0.6);position:relative}
+			.frame::before,.frame::after{position:absolute;font-size:28px}
+			.frame::before{content:"💗";left:14px;top:8px}
+			.frame::after{content:"💖";right:14px;bottom:8px;transform:rotate(-20deg)}
+			@media(prefers-color-scheme:dark){.frame{background:linear-gradient(180deg,#2b0b13,#2f0f16);border-color:rgba(255,182,193,0.12);box-shadow:0 12px 30px rgba(255,105,180,0.04)}}
+		</style>
+</head>
+<body>
+	<div id="loading-overlay">
+		<div class="loading-container">
+			<div class="paper-heart"></div>
+			<div class="paper-heart-inner"></div>
+		</div>
+		<div class="loading-text">Loading Love...</div>
+	</div>
+	<script src="loader.js"></script>
+
+	<div class="frame">
+		<div class="container">
+		<h1>A Memory</h1>
+		<div class="image-gallery">
+			<figure>
+				<img src="main.webp" alt="Main photo" class="main-photo" loading="lazy">
+				<figcaption class="caption">I miss this, I miss this hand</figcaption>
+			</figure>
+			<figure>
+				<img src="second.webp" alt="Second photo" class="secondary-photo" loading="lazy">
+				<figcaption class="caption">One of my favourite pics you're cuteeeee</figcaption>
+			</figure>
+		</div>
+		<p>
+		I look back on the day we first met — the day we so casually decided, “Oh well, let’s meet this stranger.” I took you to see my favourite ice cream shop, but of course it was closed. We went to another shop, I spotted a small portion, and I bought it for you. We then went by the bridge, sat, and ate our ice cream.
+		</p>
+
+		<p>
+		I have a habit of studying people’s faces and eyes to get a sense of who they are. That day I took a good look at you, and you seemed like someone who appreciates the little things in life. Seeing you enjoy my yapping made my day. I waited until you were ready to go out with me again because I wanted to see how eager you were, and I wasn’t surprised when you wanted to go out again. From then on I looked forward to our time together and loved our conversations.
+		</p>
+
+		<p>
+		That night by the Joali, seeing you worried and anxious made me feel the same, and I was unsure how things would go afterward. But once I got home, all I could think about was you. That’s when I realised I liked you and felt the urge to protect your peace and endure the unpredictability — you had already left a mark on me.
+		</p>
+
+		<p>
+		I’m so glad we’ve come this far and that things have turned out for the better. I don’t just like you anymore — I love you, Inaan. You’re the first and last thing on my mind every day.
+		</p>
+
+		<p class="proposal">I know I haven't formally asked you this yet. I know how much we mean to each other, but I need to hear this from you directly. Inaan, will you be my girlfriend? 😊 Please text me your response on Instagram.</p>
+
+		<div style="margin-top:20px;">
+			<a href="Happy valentine's day cutes.html" class="yes-button">Back</a>
+		</div>
+	</div>
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./sw.js')
+				.then(reg => console.log('Service Worker registered'))
+				.catch(err => console.log('Service Worker registration failed:', err));
+		}
+	</script>
+</body>
+</html>
+
