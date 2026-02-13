@@ -8,6 +8,32 @@
 	<link rel="stylesheet" href="loader.css">
 
 		<style>
+			#music-toggle {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: rgba(255, 105, 180, 0.8);
+				border: none;
+				color: white;
+				font-size: 24px;
+				cursor: pointer;
+				z-index: 1000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+				transition: all 0.3s;
+			}
+			#music-toggle:hover {
+				background: rgba(255, 105, 180, 1);
+				transform: scale(1.1);
+			}
+		</style>
+
+		<style>
 			.image-gallery {display:flex;flex-direction:column;align-items:center;gap:14px;margin:18px 0;}
 			.image-gallery figure{margin:0;display:flex;flex-direction:column;align-items:center}
 			.main-photo {max-width:380px;width:80%;height:auto;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.12);} 
@@ -39,6 +65,30 @@
 		</style>
 </head>
 <body>
+	<audio id="background-music" loop>
+		<source src="https://audio.com/syahirah-1/audio/wave-to-earth-love" type="audio/mpeg">
+	</audio>
+	<button id="music-toggle" onclick="toggleMusic()">🎵</button>
+	<script>
+		const audio = document.getElementById('background-music');
+		const btn = document.getElementById('music-toggle');
+		
+		audio.volume = 0.3;
+		audio.play().catch(() => {
+			console.log('Autoplay prevented by browser');
+		});
+		
+		function toggleMusic() {
+			if (audio.paused) {
+				audio.play();
+				btn.textContent = '🎵';
+			} else {
+				audio.pause();
+				btn.textContent = '🔇';
+			}
+		}
+	</script>
+
 	<div class="lily lily-1">🌸</div>
 	<div class="lily lily-2">🌸</div>
 	<div class="lily lily-3">🌸</div>

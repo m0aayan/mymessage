@@ -9,6 +9,31 @@
     <link rel="preload" href="yes.webp" as="image">
     <link rel="stylesheet" href="loader.css">
     <style>
+        #music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 105, 180, 0.8);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        #music-toggle:hover {
+            background: rgba(255, 105, 180, 1);
+            transform: scale(1.1);
+        }
+    </style>
+    <style>
         #password-modal {
             position: fixed;
             top: 0;
@@ -81,6 +106,30 @@
     </style>
 </head>
 <body>
+    <audio id="background-music" loop>
+        <source src="https://audio.com/syahirah-1/audio/wave-to-earth-love" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" onclick="toggleMusic()">🎵</button>
+    <script>
+        const audio = document.getElementById('background-music');
+        const btn = document.getElementById('music-toggle');
+        
+        audio.volume = 0.3;
+        audio.play().catch(() => {
+            console.log('Autoplay prevented by browser');
+        });
+        
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = '🎵';
+            } else {
+                audio.pause();
+                btn.textContent = '🔇';
+            }
+        }
+    </script>
+
     <div id="password-modal">
         <div class="password-container">
             <h1>🔒 Enter Password</h1>
