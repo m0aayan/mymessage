@@ -9,31 +9,6 @@
     <link rel="preload" href="yes.webp" as="image">
     <link rel="stylesheet" href="loader.css">
     <style>
-        #music-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 105, 180, 0.8);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-        #music-toggle:hover {
-            background: rgba(255, 105, 180, 1);
-            transform: scale(1.1);
-        }
-    </style>
-    <style>
         #password-modal {
             position: fixed;
             top: 0;
@@ -106,57 +81,6 @@
     </style>
 </head>
 <body>
-    <audio id="background-music" loop crossorigin="anonymous">
-        <source src="https://audio.com/syahirah-1/audio/wave-to-earth-love" type="audio/mpeg">
-        Your browser does not support audio playback.
-    </audio>
-    <button id="music-toggle" onclick="toggleMusic()" title="Click to play/pause music">🎵</button>
-    <script>
-        const audio = document.getElementById('background-music');
-        const btn = document.getElementById('music-toggle');
-        let isPlaying = false;
-        
-        audio.volume = 0.3;
-        
-        // Try to play on load
-        audio.play().then(() => {
-            isPlaying = true;
-            btn.textContent = '🎵';
-        }).catch(err => {
-            console.log('Autoplay blocked, user must interact first');
-            isPlaying = false;
-            btn.textContent = '🔇';
-        });
-        
-        // Also try to play on first user interaction
-        document.addEventListener('click', () => {
-            if (!isPlaying && audio.paused) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    btn.textContent = '🎵';
-                }).catch(err => console.log('Play error:', err));
-            }
-        }, { once: true });
-        
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    btn.textContent = '🎵';
-                }).catch(err => console.log('Play error:', err));
-            } else {
-                audio.pause();
-                isPlaying = false;
-                btn.textContent = '🔇';
-            }
-        }
-        
-        // Log audio errors for debugging
-        audio.addEventListener('error', (e) => {
-            console.log('Audio error:', e, 'Network state:', audio.networkState);
-        });
-    </script>
-
     <div id="password-modal">
         <div class="password-container">
             <h1>🔒 Enter Password</h1>
