@@ -106,28 +106,55 @@
     </style>
 </head>
 <body>
-    <audio id="background-music" loop>
+    <audio id="background-music" loop crossorigin="anonymous">
         <source src="https://audio.com/syahirah-1/audio/wave-to-earth-love" type="audio/mpeg">
+        Your browser does not support audio playback.
     </audio>
-    <button id="music-toggle" onclick="toggleMusic()">🎵</button>
+    <button id="music-toggle" onclick="toggleMusic()" title="Click to play/pause music">🎵</button>
     <script>
         const audio = document.getElementById('background-music');
         const btn = document.getElementById('music-toggle');
+        let isPlaying = false;
         
         audio.volume = 0.3;
-        audio.play().catch(() => {
-            console.log('Autoplay prevented by browser');
+        
+        // Try to play on load
+        audio.play().then(() => {
+            isPlaying = true;
+            btn.textContent = '🎵';
+        }).catch(err => {
+            console.log('Autoplay blocked, user must interact first');
+            isPlaying = false;
+            btn.textContent = '🔇';
         });
+        
+        // Also try to play on first user interaction
+        document.addEventListener('click', () => {
+            if (!isPlaying && audio.paused) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    btn.textContent = '🎵';
+                }).catch(err => console.log('Play error:', err));
+            }
+        }, { once: true });
         
         function toggleMusic() {
             if (audio.paused) {
-                audio.play();
-                btn.textContent = '🎵';
+                audio.play().then(() => {
+                    isPlaying = true;
+                    btn.textContent = '🎵';
+                }).catch(err => console.log('Play error:', err));
             } else {
                 audio.pause();
+                isPlaying = false;
                 btn.textContent = '🔇';
             }
         }
+        
+        // Log audio errors for debugging
+        audio.addEventListener('error', (e) => {
+            console.log('Audio error:', e, 'Network state:', audio.networkState);
+        });
     </script>
 
     <div id="password-modal">
